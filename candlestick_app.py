@@ -9,17 +9,19 @@ import dash_html_components as html
 from dash.dependencies import Output
 
 # 1) Read in the candlestick data from Plotly's example data sets on GitHub:
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+#df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+df = pd.read_csv('currency_pair_history.csv')
+print(df.columns)
 
 # 2) Make the candlestick figure
 fig = go.Figure(
     data=[
         go.Candlestick(
-            x=df['Date'],
-            open=df['AAPL.Open'],
-            high=df['AAPL.High'],
-            low=df['AAPL.Low'],
-            close=df['AAPL.Close']
+            x=df['date'],
+            open=df['open'],
+            high=df['high'],
+            low=df['low'],
+            close=df['close']
         )
     ]
 )
