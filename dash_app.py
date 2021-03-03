@@ -89,7 +89,9 @@ def update_candlestick_graph(n_clicks, value): # n_clicks doesn't get used, we o
         f.write(value)
 
     # Wait until ibkr_app runs the query and saves the historical prices csv
-    sleep(15)
+    while 'currency_pair_history.csv' not in listdir():
+        sleep(1)
+    sleep(3)
 
     # Read in the historical prices
     df = pd.read_csv('currency_pair_history.csv')
